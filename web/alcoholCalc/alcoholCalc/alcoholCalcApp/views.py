@@ -30,5 +30,5 @@ def burningRate(request):
         if form.is_valid():
             return render(request, "burningRate.html", {"form": form, "output": output})
 
-    f
+    
     return render(request, "burningRate.html", {"form": form})
