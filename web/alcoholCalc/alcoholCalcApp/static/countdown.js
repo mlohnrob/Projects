@@ -19,5 +19,5 @@ output = document.getElementById("output");
 console.log(output);
 
 if (output != "") {
-  timer(text);
+  timer(output);
 }
