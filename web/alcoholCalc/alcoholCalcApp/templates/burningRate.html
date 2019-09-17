@@ -1,12 +1,12 @@
 {% load crispy_forms_tags %}
-{% load static %}
+<!-- {% load static %} -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="{% static 'countdown.js' %}"></script>
+  <!-- <script src="{% static 'countdown.js' %}"></script> -->
   <title>Burning Rate</title>
 </head>
 <body>
@@ -15,7 +15,8 @@
   {% csrf_token %}
   {{ form|crispy }}
   <input type="submit" value="Beregn">
-  <div>Du forbrænder <div id="output">{{ output }}</div> genstande i timen</div>
-  <div>Registration closes in <span id="timer">05:00</span> minutes!</div>
+  {{ output }}
+  <!-- <div>Du forbrænder <div id="output">{{ output }}</div> genstande i timen</div>
+  <div>Registration closes in <span id="timer">05:00</span> minutes!</div> -->
 </body>
 </html>
