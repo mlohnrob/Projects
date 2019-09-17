@@ -33,6 +33,43 @@ def createUser(request):
     return render(request, "createUser.html", {"form": form})
 
 
+def loginUser(request):
+    if request.method == "POST":
+        form = LoginUserForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+
+            conn = psycopg2.connect(
+                dbname="alcoholcalcdb", user="postgres", password="postgres", host="localhost")
+            cur = conn.cursor()
+
+            cur.callproc("fn_checkpassword", (username, password))
+            fetched = cur.fetchone()
+            if "True" in str(fetched):
+                response = HttpResponseRedirect("/creality/")
+                cur.execute("BEGIN")
+                cur.callproc("fn_createsessionid", [username])
+                fetched = cur.fetchone()
+                cur.execute("COMMIT")
+                session_id = list(fetched)[0]
+
+                response.set_cookie("session_id", session_id)
+                return response
+            else:
+                message = "Wrong Password!"
+                return render(request, "login.html", {"form": form, "message": message})
+
+            conn.commit()
+            cur.close()
+            conn.close()
+
+            return HttpResponseRedirect("/creality/")
+
+    form = LoginUserForm()
+    return render(request, "login.html", {"form": form})
+
+
 def numberOfDrinks(request):
     if request.method =="POST":
         form = AlcForm(request.POST)
