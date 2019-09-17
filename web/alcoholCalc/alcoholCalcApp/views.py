@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .forms import *
 import psycopg2
+from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
+
 
 # Create your views here.
 
