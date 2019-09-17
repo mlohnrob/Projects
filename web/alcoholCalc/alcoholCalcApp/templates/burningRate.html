@@ -8,7 +8,11 @@
   <title>Burning Rate</title>
 </head>
 <body>
+  <input type="button" value="Hjem" onclick="location.href='/alcoholcalc/'">
+  <form method="post">
   {% csrf_token %}
   {{ form|crispy }}
+  <input type="submit" value="Beregn">
+  {{ output }}
 </body>
 </html>
