@@ -142,7 +142,7 @@ def burningRate(request):
 
             return render(request, "burningRate.html", {"form": form, "output": output})
 
-
+    form = burningRateForm()
     return render(request, "burningRate.html", {"form": form})
 
 
