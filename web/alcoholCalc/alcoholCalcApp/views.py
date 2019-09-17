@@ -73,6 +73,10 @@ def loginUser(request):
     return render(request, "login.html", {"form": form})
 
 
+def alcoholCalc(request):
+    return render(request, "alcoholCalc.html")
+
+
 def numberOfDrinks(request):
     if request.method =="POST":
         form = AlcForm(request.POST)
