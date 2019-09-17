@@ -142,7 +142,7 @@ def burningRate(request):
             else:
                 output = f"Du forbrænder {burningRateH} genstande i timen."
 
-            return render(request, "burningRate.html", {"form": form, "output": output})
+            return render(request, "burningRate.html", {"form": form, "output": burningRateH})
 
     form = burningRateForm()
     return render(request, "burningRate.html", {"form": form})
