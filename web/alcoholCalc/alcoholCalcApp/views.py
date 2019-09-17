@@ -7,7 +7,25 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 # Create your views here.
 
 def index(request):
-    return render(request, "index.html")
+    response = HttpResponseRedirect("/alcoholcalc/")
+
+        conn = psycopg2.connect(
+            dbname="alcoholCalcDB", user="postgres", password="postgres", host="localhost")
+        cur = conn.cursor()
+
+        if "session_id" in request.COOKIES:
+            cur.callproc("fn_check_sessionid", [request.COOKIES["session_id"]])
+            fetched = cur.fetchone()
+            conn.commit()
+            cur.close()
+            conn.close()
+            if "True" in str(fetched):
+                return response
+            else:
+                return render(request, "index.html")
+        else:
+            return render(request, "index.html")
+
 
 
 def createUser(request):
@@ -74,8 +92,24 @@ def loginUser(request):
 
 
 def alcoholCalc(request):
-    return render(request, "alcoholCalc.html")
+    conn = psycopg2.connect(
+        dbname="alcoholCalcDB", user="postgres", password="postgres", host="localhost")
+    cur = conn.cursor()
 
+    if "session_id" in request.COOKIES:
+        cur.callproc("fn_check_sessionid", [request.COOKIES["session_id"]])
+        fetched = cur.fetchone()
+        conn.commit()
+        cur.close()
+        conn.close()
+        if "True" in str(fetched):
+            pass
+        else:
+            return HttpResponseRedirect("/")
+    else:
+        return HttpResponseRedirect("/")
+
+    return render(request, "alcoholCalc.html")
 
 def numberOfDrinks(request):
     if request.method =="POST":
