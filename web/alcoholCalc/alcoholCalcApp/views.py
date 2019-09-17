@@ -18,7 +18,7 @@ def createUser(request):
             password = form.cleaned_data["password"]
 
             conn = psycopg2.connect(
-                dbname="alcoholcalcdb", user="postgres", password="postgres", host="localhost")
+                dbname="alcoholCalcDB", user="postgres", password="postgres", host="localhost")
             cur = conn.cursor()
 
             cur.execute("INSERT INTO users(user_username, user_email, user_password) VALUES(%s, %s, %s)",
@@ -42,7 +42,7 @@ def loginUser(request):
             password = form.cleaned_data["password"]
 
             conn = psycopg2.connect(
-                dbname="alcoholcalcdb", user="postgres", password="postgres", host="localhost")
+                dbname="alcoholCalcDB", user="postgres", password="postgres", host="localhost")
             cur = conn.cursor()
 
             cur.callproc("fn_checkpassword", (username, password))
