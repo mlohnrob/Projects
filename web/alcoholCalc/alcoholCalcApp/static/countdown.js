@@ -1,6 +1,7 @@
-window.onload = function() {
-  var hour = 2;
-  var sec = 60;
+window.onload
+function timer(h) {
+  var hour = h;
+  var sec = h;
   setInterval(function() {
     document.getElementById("timer").innerHTML = hour + " : " + sec;
     sec--;
@@ -12,4 +13,11 @@ window.onload = function() {
       }
     }
   }, 1000);
+}
+
+output = document.getElementById("output");
+console.log(output);
+
+if (output != "") {
+  timer(text);
 }
