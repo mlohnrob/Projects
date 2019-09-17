@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import *
+import psycopg2
 
 # Create your views here.
 
@@ -47,7 +48,7 @@ def loginUser(request):
             cur.callproc("fn_checkpassword", (username, password))
             fetched = cur.fetchone()
             if "True" in str(fetched):
-                response = HttpResponseRedirect("/creality/")
+                response = HttpResponseRedirect("/alcoholCalc/")
                 cur.execute("BEGIN")
                 cur.callproc("fn_createsessionid", [username])
                 fetched = cur.fetchone()
