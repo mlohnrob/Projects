@@ -8,5 +8,5 @@ urlpatterns = [
     path("charmeIndex/", views.charmeIndex, name="charmeIndex"),
     path("createuser/", views.createUser, name="createUser"),
     path("login/", views.loginUser, name="login"),
-    path("alcoholcalc/", views.alocholCalc, name="alcoholCalc")
+    path("alcoholcalc/", views.alcoholCalc, name="alcoholCalc")
 ]
