@@ -12,6 +12,7 @@
     {% csrf_token %}
     {{ form|crispy }}
     <input type="submit" value="Create User">
+    {{ message }}
   </form>
 </body>
 </html>

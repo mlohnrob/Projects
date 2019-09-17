@@ -40,12 +40,15 @@ def createUser(request):
                 dbname="alcoholCalcDB", user="postgres", password="postgres", host="localhost")
             cur = conn.cursor()
 
-            cur.execute("INSERT INTO users(user_username, user_email, user_password) VALUES(%s, %s, %s)",
-                        (username, email, password))
+            try:
+                cur.execute("INSERT INTO users(user_username, user_email, user_password) VALUES(%s, %s, %s)", (username, email, password))
+                conn.commit()
+                cur.close()
+                conn.close()
+            except:
+                message = "Username already taken!\nTry again..."
+                return render(request, "createUser.html", {"form": form, "message": message})
 
-            conn.commit()
-            cur.close()
-            conn.close()
 
             return HttpResponseRedirect("/login/")
 
