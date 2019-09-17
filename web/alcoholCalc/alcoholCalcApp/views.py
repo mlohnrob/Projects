@@ -7,6 +7,32 @@ def index(request):
     return render(request, "index.html")
 
 
+def createUser(request):
+    if request.method == "POST":
+        form = CreateUserForm(request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            email = form.cleaned_data["email"]
+            password = form.cleaned_data["password"]
+
+            conn = psycopg2.connect(
+                dbname="alcoholcalcdb", user="postgres", password="postgres", host="localhost")
+            cur = conn.cursor()
+
+            cur.execute("INSERT INTO users(user_username, user_email, user_password) VALUES(%s, %s, %s)",
+                        (username, email, password))
+
+            conn.commit()
+            cur.close()
+            conn.close()
+
+            return HttpResponseRedirect("/login/")
+
+    form = CreateUserForm()
+    return render(request, "createUser.html", {"form": form})
+
+
 def numberOfDrinks(request):
     if request.method =="POST":
         form = AlcForm(request.POST)
