@@ -80,7 +80,7 @@ def loginUser(request):
                 response.set_cookie("session_id", session_id)
                 return response
             else:
-                message = "Wrong Password!"
+                message = "Bruger eller adgangskode er forkert!\nPrøv igen..."
                 return render(request, "login.html", {"form": form, "message": message})
 
             conn.commit()
