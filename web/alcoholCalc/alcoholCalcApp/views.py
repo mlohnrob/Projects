@@ -37,8 +37,8 @@ def numberOfDrinks(request):
     if request.method =="POST":
         form = AlcForm(request.POST)
         if form.is_valid():
-            volume = form.cleaned_data["V"]
-            percent = form.cleaned_data["P"]
+            volume = form.cleaned_data["volume"]
+            percent = form.cleaned_data["percent"]
 
             drinks = volume*789*(percent/100)/12
 
@@ -54,7 +54,16 @@ def burningRate(request):
     if request.method == "POST":
         form = burningRateForm(request.POST)
         if form.is_valid():
-            output = ""
+            mass = form.cleaned_data["mass"]
+            numOfDrinks = form.cleaned_data["numOfDrinks"]
+
+            burningRateH = 0.0083*mass
+            if numOfDrinks != None:
+                hoursTillSober = numOfDrinks/burningRateH
+                output = f"Du forbrænder {burningRateH} genstande i timen.\nDu vil være ædru om {hoursTillSober} timer"
+            else:
+                output = f"Du forbrænder {burningRateH} genstande i timen."
+
             return render(request, "burningRate.html", {"form": form, "output": output})
 
 
