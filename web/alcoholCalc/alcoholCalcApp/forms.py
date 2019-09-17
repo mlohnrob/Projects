@@ -7,7 +7,7 @@ class AlcForm(forms.Form):
 
 
 class burningRateForm(forms.Form):
-    mass = forms.FloatField(label="Dint Vægt:")
+    mass = forms.FloatField(label="Din Vægt:")
     numOfDrinks = forms.IntegerField(label="Antal genstande drukket:", required=False)
 
 
