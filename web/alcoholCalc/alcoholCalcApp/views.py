@@ -92,8 +92,7 @@ def loginUser(request):
 
 
 def alcoholCalc(request):
-    conn = psycopg2.connect(
-        dbname="alcoholCalcDB", user="postgres", password="postgres", host="localhost")
+    conn = psycopg2.connect(dbname="alcoholCalcDB", user="postgres", password="postgres", host="localhost")
     cur = conn.cursor()
 
     if "session_id" in request.COOKIES:
