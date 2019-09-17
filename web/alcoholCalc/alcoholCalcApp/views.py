@@ -1,10 +1,9 @@
 from django.shortcuts import render
-from .forms import *
-import psycopg2
 from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
+import psycopg2
+from .forms import *
 
 
-# Create your views here.
 
 def index(request):
     response = HttpResponseRedirect("/alcoholcalc/")
