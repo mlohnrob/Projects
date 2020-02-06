@@ -9,15 +9,13 @@ root.title("Andengradsligning")
 root.geometry("300x400")
 
 
-
 def plot():
     a = float(a_input.get())
     b = float(b_input.get())
     c = float(c_input.get())
 
     d = b**2-4*a*c
-
-    
+    print(d)
 
     x_T = -b/(2*a)
     y_T = -d/(4*a)
@@ -25,29 +23,35 @@ def plot():
     a_list = []
     b_list = []
 
-    for x in range(-10,10,1):
+    for x in range(-80, 100):
         y = (a*(x**2))+(b*x)+c
         a_list.append(x)
         b_list.append(y)
-    
+
     print(a_list, b_list)
-    fig = plt.figure()
+    fig = plt.figure(num=f"f(x)={a}x^2+{b}x+{c}")
     axes = fig.add_subplot(111)
+    axes.grid()
     axes.plot(a_list, b_list)
 
-    if d>0:
+    if d > 0:
         x_1 = (-b+d**0.5)/(2*a)
         x_2 = (-b-d**0.5)/(2*a)
         plt.scatter(x_1, 0)
+        plt.text(x_1, 1, f"({x_1}, 0)")
         plt.scatter(x_2, 0)
-    elif d==0:
+        plt.text(x_2, 1, f"({x_2}, 0)")
+    elif d == 0:
         x_1 = (-b)/(2*a)
         plt.scatter(x_1)
 
-    
+    plt.scatter(x_T, y_T)
+    plt.text(x_T, y_T+1, f"({x_T}, {y_T})")
 
+    axes.autoscale_view(True, True, True)
 
     plt.show()
+
 
 a_lbl = tk.Label(root, text="a:")
 a_lbl.grid(row=0, column=1)
