@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import 'package:qsik/ui/views/startup/startup_view_model.dart';
+import 'package:qsik_spotify/ui/views/startup/startup_view_model.dart';
 
 class StartUpView extends StatelessWidget {
   const StartUpView({Key key}) : super(key: key);

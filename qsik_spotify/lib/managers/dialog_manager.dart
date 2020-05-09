@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:qsik/locator.dart';
-import 'package:qsik/models/dialog_models.dart';
-import 'package:qsik/services/dialog_service.dart';
+import 'package:qsik_spotify/locator.dart';
+import 'package:qsik_spotify/models/dialog_models.dart';
+import 'package:qsik_spotify/services/dialog_service.dart';
 
 class DialogManager extends StatefulWidget {
   final Widget child;

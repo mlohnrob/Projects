@@ -1,5 +1,5 @@
-import 'package:qsik/services/navigation_service.dart';
-import 'package:qsik/locator.dart';
+import 'package:qsik_spotify/services/navigation_service.dart';
+import 'package:qsik_spotify/locator.dart';
 import 'package:stacked/stacked.dart';
 
 class StartUpViewModel extends BaseViewModel {

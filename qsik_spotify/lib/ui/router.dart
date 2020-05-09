@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:qsik/constants/route_names.dart';
+import 'package:qsik_spotify/constants/route_names.dart';
 
-import 'package:qsik/ui/views/startup/startup_view.dart';
+import 'package:qsik_spotify/ui/views/startup/startup_view.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
